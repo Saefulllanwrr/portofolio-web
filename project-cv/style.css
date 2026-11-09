@@ -1,0 +1,161 @@
+/* style.css */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  --ink: #010736;
+  --navy: #0d1c42;
+  --steel: #22396f;
+  --cream: #fcf1d0;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background-color: var(--ink);
+  color: rgba(252, 241, 208, 0.72);
+}
+
+::selection {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--steel);
+  border-radius: 10px;
+}
+
+#mobile-menu {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Blueprint grid backdrop */
+.blueprint {
+  background-image:
+    linear-gradient(rgba(34, 57, 111, 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 57, 111, 0.35) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 70% 40%, #000 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 70% 40%, #000 20%, transparent 70%);
+}
+
+/* "Signal strength" skill meter: same px pattern on track and fill keeps segments aligned */
+.meter {
+  height: 10px;
+  background: repeating-linear-gradient(90deg, var(--steel) 0 14px, transparent 14px 18px);
+}
+.meter > span {
+  display: block;
+  height: 100%;
+  background: repeating-linear-gradient(90deg, var(--cream) 0 14px, transparent 14px 18px);
+}
+
+/* Intro screen */
+.intro-half {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: var(--ink);
+  transition: transform 0.9s cubic-bezier(0.77, 0, 0.18, 1) 0.35s;
+}
+.intro-top {
+  top: 0;
+}
+.intro-bottom {
+  bottom: 0;
+}
+.intro-content {
+  transition: opacity 0.35s, transform 0.35s;
+}
+.intro-grid {
+  animation: intro-fade 1.6s ease-out both;
+}
+.intro-btn-wrap {
+  animation: intro-pop 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.3) 0.3s both;
+}
+/* Signal-style ripples pulsing out from the button */
+.intro-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(252, 241, 208, 0.5);
+  border-radius: 9999px;
+  animation: intro-ripple 3s ease-out infinite;
+  pointer-events: none;
+}
+/* Cream line that draws across the screen, then the halves split along it */
+.intro-seam {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--cream);
+  box-shadow: 0 0 12px var(--cream);
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1), opacity 0.3s 0.5s;
+}
+#intro.opening .intro-content {
+  opacity: 0;
+  transform: scale(0.9);
+}
+#intro.opening .intro-seam {
+  transform: scaleX(1);
+  opacity: 0;
+}
+#intro.opening .intro-top {
+  transform: translateY(-100%);
+}
+#intro.opening .intro-bottom {
+  transform: translateY(100%);
+}
+@keyframes intro-fade {
+  from { opacity: 0; }
+}
+@keyframes intro-pop {
+  from { opacity: 0; transform: scale(0.6); }
+}
+@keyframes intro-ripple {
+  from { transform: scale(1); opacity: 0.8; }
+  to { transform: scale(1.9, 2.6); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-half,
+  .intro-content,
+  .intro-seam {
+    transition-duration: 0.01s;
+    transition-delay: 0s;
+  }
+  .intro-ring,
+  .intro-grid,
+  .intro-btn-wrap {
+    animation: none;
+  }
+}
+
+/* Duotone photo treatment */
+.duotone {
+  position: relative;
+}
+.duotone img {
+  filter: grayscale(1) contrast(1.1);
+}
+.duotone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--steel);
+  mix-blend-mode: color;
+  transition: opacity 0.7s;
+}
+.duotone:hover::after {
+  opacity: 0;
+}
+.duotone:hover img {
+  filter: none;
+}

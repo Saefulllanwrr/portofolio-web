@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Saeful Anwar</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=3" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ["Fraunces", "serif"],
+              sans: ["DM Sans", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+            colors: {
+              ink: "#010736",
+              navy: "#0D1C42",
+              steel: "#22396F",
+              cream: "#FCF1D0",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="font-sans bg-ink antialiased overflow-x-hidden overflow-hidden">
+    <!-- Intro screen: two halves slide apart when "Open Portfolio" is clicked -->
+    <div id="intro" class="fixed inset-0 z-[200]" role="dialog" aria-label="Welcome">
+      <div class="intro-half intro-top"></div>
+      <div class="intro-half intro-bottom"></div>
+      <div class="intro-content relative h-full flex items-center justify-center px-6">
+        <div class="blueprint intro-grid absolute inset-0 pointer-events-none"></div>
+        <div class="intro-btn-wrap relative">
+          <span class="intro-ring"></span>
+          <span class="intro-ring" style="animation-delay: 1s"></span>
+          <span class="intro-ring" style="animation-delay: 2s"></span>
+          <button id="openBtn" class="group relative bg-cream text-ink font-medium text-lg px-9 py-4 rounded-full inline-flex items-center gap-3 hover:scale-105 transition-transform shadow-[0_10px_50px_-10px_rgba(252,241,208,0.5)]">
+            Open Portfolio
+            <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+      </div>
+      <div class="intro-seam"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="w-full sticky top-0 z-[100] bg-ink/85 backdrop-blur-xl border-b border-steel/60">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#home" class="font-serif text-2xl text-cream">S<span class="italic">a</span>.</a>
+
+        <nav class="hidden md:flex items-center gap-9 text-sm">
+          <a href="#about" class="hover:text-cream transition-colors"><span class="font-mono text-xs text-cream/40 mr-1">01</span>About</a>
+          <a href="#resume" class="hover:text-cream transition-colors"><span class="font-mono text-xs text-cream/40 mr-1">02</span>Resume</a>
+          <a href="#skills" class="hover:text-cream transition-colors"><span class="font-mono text-xs text-cream/40 mr-1">03</span>Skills</a>
+          <a href="#contact" class="bg-cream text-ink font-medium px-5 py-2 rounded-full hover:bg-cream/85 transition-colors">Contact Me</a>
+        </nav>
+
+        <button id="menu-btn" aria-label="Toggle menu" class="md:hidden flex items-center justify-center p-2 text-cream z-[110] relative">
+          <i class="material-icons text-3xl" id="menu-icon">menu</i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile menu (outside header so backdrop-blur doesn't trap the fixed layer) -->
+    <div id="mobile-menu" class="fixed inset-0 w-full h-screen bg-ink flex flex-col items-center justify-center gap-8 font-serif text-3xl text-cream translate-x-full md:hidden z-[90]">
+      <a href="#home" class="mobile-link hover:italic">Home</a>
+      <a href="#about" class="mobile-link hover:italic">About</a>
+      <a href="#resume" class="mobile-link hover:italic">Resume</a>
+      <a href="#skills" class="mobile-link hover:italic">Skills</a>
+      <a href="#contact" class="mobile-link font-sans text-lg bg-cream text-ink font-medium px-10 py-3 rounded-full">Contact Me</a>
+      <div class="flex gap-6 mt-8 text-xl text-cream/70">
+        <a href="https://www.instagram.com/saefull4nwrrr?igsh=MW15NWw1bWU2bjlwZQ==" aria-label="Instagram" class="hover:text-cream"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/saeful-anwar-hikmatulloh-297007373?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" aria-label="LinkedIn" class="hover:text-cream"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section id="home" class="relative min-h-[90vh] flex items-center overflow-hidden">
+      <div class="blueprint absolute inset-0 -z-0 pointer-events-none"></div>
+
+      <div class="relative max-w-6xl w-full mx-auto px-6 py-20 grid md:grid-cols-[1.3fr_1fr] gap-14 items-center">
+        <div class="order-2 md:order-1" data-aos="fade-up">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-cream/60 flex items-center gap-3">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cream opacity-60"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-cream"></span>
+            </span>
+            Beginner Network Engineer
+          </p>
+
+          <h1 class="font-serif text-6xl md:text-8xl leading-[0.95] text-cream mt-6">
+            I am <br />
+            <span class="italic">Saeful</span> Anwar
+          </h1>
+
+          <p class="max-w-md mt-8 leading-relaxed text-lg">
+            a man with a thousand desires and
+            <span class="text-cream font-serif italic">a million</span> problems.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 mt-10">
+            <button id="downloadBtn" class="bg-cream text-ink px-7 py-4 rounded-full flex items-center gap-3 font-medium hover:-translate-y-0.5 transition-transform shadow-[0_10px_40px_-10px_rgba(252,241,208,0.4)]">
+              <i class="fa-solid fa-download"></i> Download CV
+            </button>
+            <a href="#about" class="border border-steel px-7 py-4 rounded-full text-cream hover:bg-navy transition-colors font-medium">
+              Learn More <i class="fa-solid fa-arrow-down ml-2 text-xs"></i>
+            </a>
+          </div>
+
+          <div class="flex gap-5 mt-12 text-cream/50 text-lg">
+            <a href="https://www.instagram.com/saefull4nwrrr?igsh=MW15NWw1bWU2bjlwZQ==" aria-label="Instagram" class="hover:text-cream transition-colors"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/saeful-anwar-hikmatulloh-297007373?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" aria-label="LinkedIn" class="hover:text-cream transition-colors"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="order-1 md:order-2 flex justify-center md:justify-end" data-aos="fade-left" data-aos-delay="150">
+          <div class="relative">
+            <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-t-full rounded-b-3xl border border-cream/40"></div>
+            <div class="relative rounded-t-full rounded-b-3xl overflow-hidden bg-navy border border-steel w-56 h-72 md:w-72 md:h-96">
+              <img src="image/Profile-formal.jpg" alt="Saeful Anwar" class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="absolute -left-6 bottom-10 bg-navy border border-steel rounded-2xl px-4 py-3 shadow-xl">
+              <p class="font-mono text-[10px] uppercase tracking-widest text-cream/50">Based in</p>
+              <p class="text-cream text-sm font-medium">Bandung Barat, ID</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-28 bg-navy border-y border-steel/60">
+      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+        <div class="relative" data-aos="fade-up">
+          <div class="duotone rounded-3xl overflow-hidden border border-steel">
+            <img src="https://www.goldenavenue.ae/wp-content/uploads/2022/02/1328841.jpg" alt="Server Room" class="w-full h-[420px] object-cover transition duration-700" />
+          </div>
+          <div class="absolute -bottom-8 right-6 left-6 md:left-auto md:w-72 bg-ink border border-steel rounded-2xl p-5 grid grid-cols-2 divide-x divide-steel">
+            <div class="pr-4">
+              <p class="font-serif text-4xl text-cream">3+</p>
+              <p class="font-mono text-[10px] uppercase tracking-widest text-cream/50 mt-1">Years Study</p>
+            </div>
+            <div class="pl-4">
+              <p class="font-serif text-4xl text-cream">—</p>
+              <p class="font-mono text-[10px] uppercase tracking-widest text-cream/50 mt-1">Certifications</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6 pt-10 md:pt-0" data-aos="fade-up" data-aos-delay="100">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-cream/50">01 — About My Journey</p>
+
+          <h2 class="font-serif text-4xl md:text-5xl text-cream leading-tight">
+            Bridging the gap between <span class="italic">code and cables.</span>
+          </h2>
+
+          <div class="space-y-4 leading-relaxed">
+            <p>
+              Hello! I'm <span class="text-cream font-medium">Saeful Anwar</span>. My interest in technology
+              began while I was studying Software Engineering. I found a stronger calling, though, after
+              watching IT engineers work hands-on with network devices.
+            </p>
+            <p>
+              Today I work as an
+              <span class="text-cream border-b border-cream/40">IT Officer at Maja Family</span>,
+              keeping the company's systems, network and devices running smoothly. Before that, I spent two
+              years as an on-site engineer, where I learned not just how to configure devices but how the
+              systems behind them work. I enjoy solving tricky network problems and making sure everyone
+              stays connected.
+            </p>
+          </div>
+
+          <ul class="flex flex-wrap gap-3 pt-2">
+            <li class="border border-steel rounded-full px-4 py-2 text-sm text-cream/80">Fast Learner</li>
+            <li class="border border-steel rounded-full px-4 py-2 text-sm text-cream/80">Problem Solver</li>
+            <li class="border border-steel rounded-full px-4 py-2 text-sm text-cream/80">Troubleshooting</li>
+            <li class="border border-steel rounded-full px-4 py-2 text-sm text-cream/80">Technical</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume -->
+    <section id="resume" class="py-28">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="mb-16" data-aos="fade-up">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-cream/50">02 — Resume</p>
+          <h2 class="font-serif text-4xl md:text-5xl text-cream mt-4">Education & <span class="italic">Experience</span></h2>
+        </div>
+
+        <ol class="border-l border-steel ml-2">
+          <li class="relative pl-8 md:pl-12 pb-14" data-aos="fade-up">
+            <span class="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-cream ring-4 ring-ink"></span>
+            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+              <span class="font-mono text-sm text-cream">Jul 2026 — Now</span>
+              <span class="font-mono text-[10px] uppercase tracking-widest border border-steel rounded-full px-2.5 py-0.5 text-cream/60">Experience</span>
+            </div>
+            <div class="mt-4 bg-navy border border-steel rounded-2xl p-7 hover:border-cream/40 transition-colors">
+              <h3 class="font-serif text-2xl text-cream">IT Officer</h3>
+              <p class="text-sm text-cream/50 mt-1">Maja Family</p>
+              <p class="mt-4 text-sm leading-relaxed">
+                Managing day-to-day IT operations, network and device support for the company.
+              </p>
+            </div>
+          </li>
+
+          <li class="relative pl-8 md:pl-12 pb-14" data-aos="fade-up">
+            <span class="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-cream bg-ink"></span>
+            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+              <span class="font-mono text-sm text-cream">2024 — Jun 2026</span>
+              <span class="font-mono text-[10px] uppercase tracking-widest border border-steel rounded-full px-2.5 py-0.5 text-cream/60">Experience</span>
+            </div>
+            <div class="mt-4 bg-navy border border-steel rounded-2xl p-7 hover:border-cream/40 transition-colors">
+              <h3 class="font-serif text-2xl text-cream">On-Site Engineering</h3>
+              <p class="text-sm text-cream/50 mt-1">PT Melvar Prima Solusi</p>
+              <p class="mt-4 text-sm leading-relaxed">
+                Network maintenance, network troubleshooting, and direct technical support to users.
+              </p>
+            </div>
+          </li>
+
+          <li class="relative pl-8 md:pl-12" data-aos="fade-up">
+            <span class="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-cream bg-ink"></span>
+            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+              <span class="font-mono text-sm text-cream">2022 — 2025</span>
+              <span class="font-mono text-[10px] uppercase tracking-widest border border-steel rounded-full px-2.5 py-0.5 text-cream/60">Education</span>
+            </div>
+            <div class="mt-4 bg-navy border border-steel rounded-2xl p-7 hover:border-cream/40 transition-colors">
+              <h3 class="font-serif text-2xl text-cream">Software Engineering</h3>
+              <p class="text-sm text-cream/50 mt-1">SMK Negeri 1 Cisarua</p>
+              <p class="mt-4 text-sm leading-relaxed">
+                Focus on developing programming logic, databases, and basics of computer networks.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-28 bg-navy border-y border-steel/60">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="mb-16" data-aos="fade-up">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-cream/50">03 — Skills</p>
+          <h2 class="font-serif text-4xl md:text-5xl text-cream mt-4">What I <span class="italic">work with</span></h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="bg-ink border border-steel rounded-2xl p-7" data-aos="fade-up">
+            <div class="flex justify-between items-start">
+              <i class="material-icons text-cream text-3xl">lan</i>
+              <span class="font-mono text-cream">75%</span>
+            </div>
+            <h3 class="font-serif text-2xl text-cream mt-6 mb-4">Networking</h3>
+            <div class="meter"><span style="width: 75%"></span></div>
+          </div>
+
+          <div class="bg-ink border border-steel rounded-2xl p-7" data-aos="fade-up" data-aos-delay="50">
+            <div class="flex justify-between items-start">
+              <i class="material-icons text-cream text-3xl">terminal</i>
+              <span class="font-mono text-cream">80%</span>
+            </div>
+            <h3 class="font-serif text-2xl text-cream mt-6 mb-4">Software and Tools</h3>
+            <div class="meter"><span style="width: 80%"></span></div>
+          </div>
+
+          <div class="bg-ink border border-steel rounded-2xl p-7" data-aos="fade-up">
+            <div class="flex justify-between items-start">
+              <i class="material-icons text-cream text-3xl">palette</i>
+              <span class="font-mono text-cream">80%</span>
+            </div>
+            <h3 class="font-serif text-2xl text-cream mt-6 mb-4">Design</h3>
+            <div class="meter"><span style="width: 80%"></span></div>
+          </div>
+
+          <div class="bg-ink border border-steel rounded-2xl p-7" data-aos="fade-up" data-aos-delay="50">
+            <div class="flex justify-between items-start">
+              <i class="material-icons text-cream text-3xl">code</i>
+              <span class="font-mono text-cream">50%</span>
+            </div>
+            <h3 class="font-serif text-2xl text-cream mt-6 mb-4">Web Development</h3>
+            <div class="meter"><span style="width: 50%"></span></div>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="grid md:grid-cols-2 gap-5 mt-5">
+          <div class="border border-steel rounded-2xl p-7" data-aos="fade-up">
+            <h3 class="font-mono text-xs uppercase tracking-[0.25em] text-cream/50 mb-6">Network Tools</h3>
+            <ul class="flex flex-wrap gap-3">
+              <li class="flex items-center gap-2 bg-ink border border-steel rounded-full pl-2 pr-4 py-1.5 text-sm text-cream/85">
+                <img src="image/winbox.png" class="h-6 w-6 object-contain" alt="" /> Winbox
+              </li>
+              <li class="flex items-center gap-2 bg-ink border border-steel rounded-full pl-2 pr-4 py-1.5 text-sm text-cream/85">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Prtg-network-monitor-logo.png" class="h-6 w-6 object-contain" alt="" /> PRTG
+              </li>
+              <li class="flex items-center gap-2 bg-ink border border-steel rounded-full pl-3 pr-4 py-1.5 text-sm text-cream/85">
+                <i class="fa-solid fa-terminal text-cream"></i> Terminal
+              </li>
+            </ul>
+          </div>
+
+          <div class="border border-steel rounded-2xl p-7" data-aos="fade-up" data-aos-delay="50">
+            <h3 class="font-mono text-xs uppercase tracking-[0.25em] text-cream/50 mb-6">Design & Code</h3>
+            <ul class="flex flex-wrap gap-3">
+              <li class="flex items-center gap-2 bg-ink border border-steel rounded-full pl-3 pr-4 py-1.5 text-sm text-cream/85">
+                <i class="fa-brands fa-figma text-[#F24E1E]"></i> Figma
+              </li>
+              <li class="flex items-center gap-2 bg-ink border border-steel rounded-full pl-2 pr-4 py-1.5 text-sm text-cream/85">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" class="h-6 w-6 object-contain" alt="" /> Photoshop
+              </li>
+              <li class="flex items-center gap-2 bg-ink border border-steel rounded-full pl-2 pr-4 py-1.5 text-sm text-cream/85">
+                <img src="https://freelogopng.com/images/all_img/1656734305canva-app-icon.png" class="h-6 w-6 object-contain" alt="" /> Canva
+              </li>
+              <li class="flex items-center gap-2 bg-ink border border-steel rounded-full pl-2 pr-4 py-1.5 text-sm text-cream/85">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" class="h-6 w-6 object-contain" alt="" /> VS Code
+              </li>
+              <li class="flex items-center gap-2 bg-ink border border-steel rounded-full pl-3 pr-4 py-1.5 text-sm text-cream/85">
+                <i class="fa-solid fa-server text-[#0096e3]"></i> Laragon
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <footer id="contact" class="relative pt-28 pb-10 overflow-hidden">
+      <div class="blueprint absolute inset-0 pointer-events-none"></div>
+
+      <div class="relative max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-14 items-end" data-aos="fade-up">
+          <div>
+            <p class="font-mono text-xs uppercase tracking-[0.25em] text-cream/50">04 — Contact</p>
+            <h2 class="font-serif text-5xl md:text-7xl text-cream mt-4 leading-none">Get in <span class="italic">touch.</span></h2>
+            <p class="mt-6 max-w-sm">For business and partnership inquiry please contact me below!</p>
+          </div>
+
+          <ul class="divide-y divide-steel border-y border-steel">
+            <li>
+              <a href="tel:+6285720800889" class="flex items-center gap-5 py-5 group">
+                <i class="fa-solid fa-phone w-5 text-cream/60 group-hover:text-cream transition-colors"></i>
+                <span class="flex-1">
+                  <span class="block font-mono text-[10px] uppercase tracking-widest text-cream/50">Phone</span>
+                  <span class="text-cream">+62 857-2080-0889</span>
+                </span>
+                <i class="fa-solid fa-arrow-right -rotate-45 text-cream/30 group-hover:text-cream transition-colors"></i>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:saefulllanwrrr@gmail.com" class="flex items-center gap-5 py-5 group">
+                <i class="fa-solid fa-envelope w-5 text-cream/60 group-hover:text-cream transition-colors"></i>
+                <span class="flex-1 min-w-0">
+                  <span class="block font-mono text-[10px] uppercase tracking-widest text-cream/50">Email</span>
+                  <span class="text-cream break-all">saefulllanwrrr@gmail.com</span>
+                </span>
+                <i class="fa-solid fa-arrow-right -rotate-45 text-cream/30 group-hover:text-cream transition-colors"></i>
+              </a>
+            </li>
+            <li class="flex items-center gap-5 py-5">
+              <i class="fa-solid fa-location-dot w-5 text-cream/60"></i>
+              <span class="flex-1">
+                <span class="block font-mono text-[10px] uppercase tracking-widest text-cream/50">Address</span>
+                <span class="text-cream text-sm">Jl. Sukaraja No.33, Cisarua Kab. Bandung Barat</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mt-20 pt-6 border-t border-steel flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+          <p class="font-mono text-[10px] text-cream/40 uppercase tracking-[0.3em]">
+            &copy; 2024 Saeful Anwar Hikmatulloh | Build with Tailwind CSS
+          </p>
+          <div class="flex gap-6 text-cream/50">
+            <a href="https://www.instagram.com/saefull4nwrrr?igsh=MW15NWw1bWU2bjlwZQ==" aria-label="Instagram" class="hover:text-cream transition-colors"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/saeful-anwar-hikmatulloh-297007373?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" aria-label="LinkedIn" class="hover:text-cream transition-colors"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js?v=2"></script>
+  </body>
+</html>
